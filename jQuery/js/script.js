@@ -37,24 +37,159 @@ $(function() {
 //        
 //    });
 //    
-//    $(".notification-bar").delay(1000).slideDown().delay(1000).fadeOut();
+//   $(".notification-bar").delay(1000).slideDown().delay(2000).fadeOut();
 
     
 //    $("div.hidden").show();
-    $("div.hidden").slideDown(500);
-    $("#box1").click(function () {
-        $(this).fadeTo(1000, 0.25, function() {
-            $(this).slideUp();
+    
+//    $("div.hidden").slideDown(500);
+//    $("#box1").click(function () {
+//        $(this).fadeTo(1000, 0.25, function() {
+//            $(this).slideUp();
+//        });
+//    });
+//    
+//    $("button").click(function() {
+//        $("#box1").slideToggle();
+//    });
+    
+    
+//    $("div#box1").click(function() {
+//        $(this).text("don't touch me! just click the button!");
+//    });
+//    
+//    $("button").click(function() {
+//        $("div#box1").fadeTo(2000, 0.5, function() {
+//            $(this).slideUp()
+//        });
+//    });
+//    
+//    $("button").click(function() {
+//        $("div#box1").slideToggle();
+//    });
+    
+//    
+//    $("#left").click(function() {
+//        $(".box").animate({
+//            left: "-=40px",
+//            filter: "hue, rotate(20deg)"
+//        },function() {
+//            
+//        });
+//    });
+//    
+//    $("#up").click(function() {
+//        $(".box").animate({
+//            top: "-=40px"
+//        }, function() {
+//            
+//        });
+//    });
+//    
+//    $("#right").click(function() {
+//        $(".box").animate({
+//            left: "+=40px"
+//        }, function() {
+//            
+//        });
+//    });
+//    
+//    $("#down").click(function() {
+//        $(".box").animate({
+//            top: "+=40px"
+//        }, function() {
+//            
+//        });
+//    });
+//    
+    
+//    
+//    $("#circle2").css({
+//        "background": "powderblue",
+//        "display": "inline-block",
+//        "color": "white",
+//        "text-align": "center",
+//        "line-height": "140px",
+//        "height": "140px",
+//        "width": "140px",
+//        "margin": "40px"
+//    }).addClass("circleShape");
+//    
+    
+    // Click the Go button
+    $("#go").click(function(){
+        
+        // build a function that checks to see if a car has won the race
+        function checkIfComplete() {
+            var isComplete = false;
+            if( isComplete == false ){
+               isComplete = true;
+            } else {
+                place = "second";
+            }
+            
+        }
+        
+        // get the width of the cars
+        var carWidth = $("#car1").width();
+        
+        // get the width of the racetrack
+        var raceTrackWidth = $(window).width() - carWidth;
+        
+        
+        // generate a random # between 1000 and 4000
+        var raceTime1 = Math.floor( (Math.random() * 4000) + 1000 );
+        var raceTime2 = Math.floor( (Math.random() * 4000) + 1000 );
+        
+        // set a flag variable to FALSE by default
+        
+        
+        // set a flag variable to FIRST by default
+        var place = "first";
+        
+        
+        // animate car 1
+        $("#car1").animate({
+            
+            // move the car width of the racetrack
+            left: raceTrackWidth
+            
+        }, raceTime1, function() {
+            
+            // animation is complete
+            
+            // run a function
+            checkIfComplete();
+            
+            // give some text feedback in the race info box
+            $("#raceInfo1 span").text('Finished in' + place + ' place and clocked in at' + raceTime1 + ' milliseconds!');
         });
+        
+        
+        // animate car 2
+        $("#car2").animate({
+            
+            // move the car width of the racetrack
+            left: raceTrackWidth
+            
+        }, raceTime2, function() {
+            
+            // animation is complete
+            
+            // run a function
+            checkIfComplete();
+            
+            // give some text feedback in the race info box
+            $("#raceInfo2 span").text('Finished in' + place + ' place and clocked in at' + raceTime2 + ' milliseconds!');
+        });
+        
     });
     
-    $("button").click(function() {
-        $("#box1").slideToggle();
+    // reset the race
+    $("#reset").click(function() {
+        $(".car").css("left", "0");
+        $(".raceInfo span").text("");
     });
-    
-    
-    
-    
     
     
     
